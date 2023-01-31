@@ -3,7 +3,7 @@ import sys
 if not 'Informer2020' in sys.path:
     sys.path += ['Informer2020']
 
-from Informer2020.utils.tools import dotdict
+from utils.tools import dotdict
 from exp.exp_informer import Exp_Informer
 import torch
 
