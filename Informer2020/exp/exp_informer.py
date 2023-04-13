@@ -23,6 +23,7 @@ class Exp_Informer(Exp_Basic):
         super(Exp_Informer, self).__init__(args)
     
     def _build_model(self):
+        import pdb; pdb.set_trace()
         model_dict = {
             'informer':Informer,
             'informerstack':InformerStack,
