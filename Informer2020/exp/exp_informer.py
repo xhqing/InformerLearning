@@ -23,7 +23,6 @@ class Exp_Informer(Exp_Basic):
         super(Exp_Informer, self).__init__(args)
     
     def _build_model(self):
-        import pdb; pdb.set_trace()
         model_dict = {
             'informer':Informer,
             'informerstack':InformerStack,
@@ -115,8 +114,7 @@ class Exp_Informer(Exp_Basic):
         self.model.eval()
         total_loss = []
         for i, (batch_x,batch_y,batch_x_mark,batch_y_mark) in enumerate(vali_loader):
-            pred, true = self._process_one_batch(
-                vali_data, batch_x, batch_y, batch_x_mark, batch_y_mark)
+            pred, true = self._process_one_batch(vali_data, batch_x, batch_y, batch_x_mark, batch_y_mark)
             loss = criterion(pred.detach().cpu(), true.detach().cpu())
             total_loss.append(loss)
         total_loss = np.average(total_loss)

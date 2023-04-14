@@ -222,7 +222,6 @@ class Dataset_Custom(Dataset):
         '''
         df_raw.columns: ['date', ...(other features), target feature]
         '''
-        import pdb; pdb.set_trace()
         # cols = list(df_raw.columns); 
         if self.cols:
             cols=self.cols.copy()
@@ -234,8 +233,10 @@ class Dataset_Custom(Dataset):
         num_train = int(len(df_raw)*0.7)
         num_test = int(len(df_raw)*0.2)
         num_vali = len(df_raw) - num_train - num_test
+
         border1s = [0, num_train-self.seq_len, len(df_raw)-num_test-self.seq_len]
         border2s = [num_train, num_train+num_vali, len(df_raw)]
+       # import pdb; pdb.set_trace()
         border1 = border1s[self.set_type]
         border2 = border2s[self.set_type]
         
@@ -264,6 +265,7 @@ class Dataset_Custom(Dataset):
         self.data_stamp = data_stamp
     
     def __getitem__(self, index):
+
         s_begin = index
         s_end = s_begin + self.seq_len
         r_begin = s_end - self.label_len 
